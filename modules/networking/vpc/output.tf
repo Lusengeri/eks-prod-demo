@@ -12,3 +12,7 @@ output "subnets" {
     public_subnets   = aws_subnet.public_subnet_
   }
 }
+
+output "vpc_id" {
+  value = aws_vpc.vpc.id
+}
