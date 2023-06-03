@@ -22,7 +22,7 @@ variable "subnet_ids" {
   type = list(any) 
 }
 
-variable "worker_image_id" {
+variable "worker_ami_id" {
   type = string
 }
 

@@ -22,6 +22,10 @@ variable "vpc_id" {
   type = string
 }
 
+variable "worker_ami_id" {
+  type = string 
+}
+
 variable "worker_instance_type" {
   type = string 
 }

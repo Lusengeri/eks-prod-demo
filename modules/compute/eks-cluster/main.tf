@@ -17,6 +17,7 @@ module "workers" {
   namespace                       = var.namespace
   subnet_ids                      = var.subnet_ids
   vpc_id                          = var.vpc_id
+  worker_ami_id                   = var.worker_ami_id
   worker_instance_type            = var.worker_instance_type
   worker_key_name                 = var.worker_key_name
 }

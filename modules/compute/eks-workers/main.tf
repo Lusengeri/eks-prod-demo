@@ -43,7 +43,7 @@ resource "aws_launch_template" "eks_node_launch_template" {
     arn = aws_iam_instance_profile.eks_worker_instance_profile.arn
   }
 
-  image_id      = var.worker_image_id
+  image_id      = var.worker_ami_id
   instance_type = var.worker_instance_type
   key_name      = var.worker_key_name
 
