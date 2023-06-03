@@ -1,3 +1,7 @@
+output "control_plane_sg_id" {
+  value = aws_security_group.control_plane_sg.id
+}
+
 output "endpoint" {
   value = aws_eks_cluster.app_cluster.endpoint
 }
