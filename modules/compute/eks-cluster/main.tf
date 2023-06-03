@@ -10,6 +10,7 @@ module "control_plane" {
 module "workers" {
   source = "../eks-workers"
 
+  cluster_ca                      = module.control_plane.cluster_ca
   control_plane_security_group_id = module.control_plane.control_plane_sg_id
   desired_worker_node_no          = var.desired_worker_node_no
   max_worker_node_no              = var.max_worker_node_no

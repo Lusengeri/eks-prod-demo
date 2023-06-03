@@ -1,3 +1,7 @@
+variable "cluster_ca" {
+  type = any 
+}
+
 variable "control_plane_security_group_id" {
   type = string
 }
