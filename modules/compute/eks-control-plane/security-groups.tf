@@ -58,6 +58,7 @@ resource "aws_security_group_rule" "masters_workers_egress" {
   from_port                = 1025
   to_port                  = 65535
   protocol                 = "tcp"
+  security_group_id        = aws_security_group.control_plane_sg.id
   source_security_group_id = var.workers_sg_id
   type                     = "egress"
 }

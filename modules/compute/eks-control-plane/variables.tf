@@ -10,6 +10,6 @@ variable "vpc_id" {
   type = any
 }
 
-variable "workers_sg_ids" {
-  type = list(any) 
+variable "workers_sg_id" {
+  type = string
 }
