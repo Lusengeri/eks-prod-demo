@@ -2,6 +2,10 @@ variable "desired_worker_node_no" {
   type = number
 }
 
+variable "kubernetes_version" {
+  type = string 
+}
+
 variable "max_worker_node_no" {
   type = number
 }

@@ -1,10 +1,11 @@
 module "control_plane" {
   source = "../eks-control-plane"
 
-  namespace     = var.namespace
-  subnet_ids    = var.subnet_ids
-  vpc_id        = var.vpc_id
-  workers_sg_id = module.workers.workers_sg_id
+  kubernetes_version = var.kubernetes_version
+  namespace          = var.namespace
+  subnet_ids         = var.subnet_ids
+  vpc_id             = var.vpc_id
+  workers_sg_id      = module.workers.workers_sg_id
 }
 
 module "workers" {
