@@ -1,9 +1,10 @@
 resource "aws_eks_cluster" "app_cluster" {
   name     = "${var.namespace}-eks-cluster"
   role_arn = aws_iam_role.eks_cluster_iam_role.arn
+  version  = "1.26"
 
   vpc_config {
-    subnet_ids = var.subnet_ids
+    subnet_ids         = var.subnet_ids
     security_group_ids = [aws_security_group.control_plane_sg.id]
   }
 
