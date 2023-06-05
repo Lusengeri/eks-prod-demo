@@ -65,5 +65,5 @@ resource "aws_launch_template" "eks_node_launch_template" {
     }
   }
 
-  user_data = filebase64("${path.module}/example.sh")
+  user_data = data.template_file.worker_node_user_data_template.rendered
 }

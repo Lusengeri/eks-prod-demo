@@ -2,6 +2,14 @@ variable "cluster_ca" {
   type = any 
 }
 
+variable "cluster_endpoint" {
+  type = any 
+}
+
+variable "cluster_full_name" {
+  type = string 
+}
+
 variable "control_plane_security_group_id" {
   type = string
 }
