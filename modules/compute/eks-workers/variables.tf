@@ -10,6 +10,10 @@ variable "cluster_full_name" {
   type = string 
 }
 
+variable "cluster_version" {
+  type = string
+}
+
 variable "control_plane_security_group_id" {
   type = string
 }

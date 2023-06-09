@@ -14,6 +14,7 @@ module "workers" {
   cluster_ca                      = module.control_plane.cluster_ca
   cluster_endpoint                = module.control_plane.cluster_endpoint
   cluster_full_name               = module.control_plane.cluster_full_name
+  cluster_version                 = module.control_plane.cluster_version
   control_plane_security_group_id = module.control_plane.control_plane_sg_id
   desired_worker_node_no          = var.desired_worker_node_no
   max_worker_node_no              = var.max_worker_node_no
