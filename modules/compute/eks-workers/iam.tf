@@ -36,6 +36,11 @@ resource "aws_iam_role_policy_attachment" "CloudWatchAgentServerPolicy" {
   role       = aws_iam_role.eks_worker_role.name
 }
 
+resource "aws_iam_role_policy_attachment" "AmazonSSMFullAccessPolicy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
+  role       = aws_iam_role.eks_worker_role.name
+}
+
 resource "aws_iam_instance_profile" "eks_worker_instance_profile" {
   name = "${var.namespace}-eks-worker-instance-profile"
   role = aws_iam_role.eks_worker_role.name
