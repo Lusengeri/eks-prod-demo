@@ -1,3 +1,7 @@
+output "internet_gateway" {
+  value = var.has_igw ? aws_internet_gateway.igw : null
+}
+
 output "sgs" {
   value = {
     alb_sg     = aws_security_group.alb_sg.id
