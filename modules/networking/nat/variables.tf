@@ -6,10 +6,10 @@ variable "namespace" {
   type = string
 }
 
-variable "private_route_table_id" {
+variable "subnet_id" {
   type = any
 }
 
-variable "subnet_id" {
-  type = any
+variable "vpc_id" {
+  type = string 
 }

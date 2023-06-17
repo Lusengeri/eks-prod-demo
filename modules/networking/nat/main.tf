@@ -1,5 +1,5 @@
 resource "aws_eip" "nat_gw_ip" {
-  vpc = true
+  domain = "vpc"
 }
 
 resource "aws_nat_gateway" "nat_gw" {
@@ -15,8 +15,21 @@ resource "aws_nat_gateway" "nat_gw" {
   depends_on = [var.internet_gateway]
 }
 
+resource "aws_route_table" "private_subnet_route_table" {
+  vpc_id = var.vpc_id
+
+  tags = {
+    Name = "${var.namespace}-private-route-table"
+  }
+}
+
+resource "aws_route_table_association" "route_table_assoc_private_subnet_" {
+  subnet_id      = var.subnet_id
+  route_table_id = aws_route_table.private_subnet_route_table.id
+}
+
 resource "aws_route" "route_to_nat_gw" {
-  route_table_id         = var.private_route_table_id
+  route_table_id         = aws_route_table.private_subnet_route_table.id
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id         = aws_nat_gateway.nat_gw.id
 }
