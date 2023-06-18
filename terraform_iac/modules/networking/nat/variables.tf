@@ -6,7 +6,11 @@ variable "namespace" {
   type = string
 }
 
-variable "subnet_id" {
+variable "nat_subnet_id" {
+  type = any
+}
+
+variable "private_subnet_id" {
   type = any
 }
 

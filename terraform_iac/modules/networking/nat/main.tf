@@ -4,7 +4,7 @@ resource "aws_eip" "nat_gw_ip" {
 
 resource "aws_nat_gateway" "nat_gw" {
   allocation_id = aws_eip.nat_gw_ip.id
-  subnet_id     = var.subnet_id
+  subnet_id     = var.nat_subnet_id
 
   tags = {
     Name = "${var.namespace}-nat-gateway"
@@ -24,7 +24,7 @@ resource "aws_route_table" "private_subnet_route_table" {
 }
 
 resource "aws_route_table_association" "route_table_assoc_private_subnet_" {
-  subnet_id      = var.subnet_id
+  subnet_id      = var.private_subnet_id
   route_table_id = aws_route_table.private_subnet_route_table.id
 }
 
