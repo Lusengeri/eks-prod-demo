@@ -22,6 +22,14 @@ variable "desired_worker_node_no" {
   type = number
 }
 
+variable "data_bucket_arn" {
+  type = any 
+}
+
+variable "environment" {
+  type = string
+}
+
 variable "max_worker_node_no" {
   type = number 
 }
@@ -44,10 +52,6 @@ variable "worker_ami_id" {
 
 variable "worker_instance_type" {
   type = string 
-}
-
-variable "worker_key_name" {
-  type = string
 }
 
 variable "vpc_id" {

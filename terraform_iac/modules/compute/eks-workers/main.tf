@@ -6,15 +6,21 @@ resource "aws_eks_node_group" "worker_node_group" {
   cluster_name    = var.cluster_full_name
   version         = var.cluster_version
   instance_types  = [var.worker_instance_type]
-  node_group_name = "${var.namespace}-worker-node-group"
+  node_group_name = "${var.namespace}-${var.environment}-worker-node-group"
   node_role_arn   = aws_iam_role.eks_worker_role.arn
-  release_version = nonsensitive(data.aws_ssm_parameter.eks_ami_release_version.value)
+  #release_version = nonsensitive(data.aws_ssm_parameter.eks_ami_release_version.value)
+  release_version = var.worker_ami_id
   subnet_ids      = var.subnet_ids
 
   scaling_config {
     desired_size = var.desired_worker_node_no
     max_size     = var.max_worker_node_no 
     min_size     = var.min_worker_node_no 
+  }
+
+  tags = {
+    "Environment" = var.environment
+    "Name"        = "${var.namespace}-worker-node-group"
   }
 
   update_config {

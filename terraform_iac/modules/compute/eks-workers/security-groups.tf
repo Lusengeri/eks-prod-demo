@@ -1,6 +1,6 @@
 resource "aws_security_group" "workers_sg" {
-  name        = "${var.namespace}-workers"
-  description = "Security group for all nodes in the ${var.namespace} cluster"
+  name        = "${var.namespace}-${var.environment}-workers"
+  description = "Security group for all nodes in the ${var.namespace}-${var.environment} cluster"
   vpc_id      = var.vpc_id
 
   egress {
@@ -11,16 +11,9 @@ resource "aws_security_group" "workers_sg" {
   }
 
   tags = {
-    Name                                                 = "${var.namespace}-cluster-sg"
-    "kubernetes.io/cluster/${var.namespace}-eks-cluster" = "owned"
+    Name                                             = "${var.namespace}-cluster-sg"
+    "kubernetes.io/cluster/${var.cluster_full_name}" = "owned"
   }
-  #  tags = merge(
-  #    var.common_tags,
-  #    {
-  #      Name                                             = "${var.cluster_full_name}-cluster-sg"
-  #      "kubernetes.io/cluster/${var.cluster_full_name}" = "owned"
-  #    },
-  #  )
 }
 
 resource "aws_security_group_rule" "worker_to_worker_tcp" {
