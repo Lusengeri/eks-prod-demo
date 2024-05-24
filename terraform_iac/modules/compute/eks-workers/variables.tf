@@ -1,13 +1,13 @@
 variable "cluster_ca" {
-  type = any 
+  type = any
 }
 
 variable "cluster_endpoint" {
-  type = any 
+  type = any
 }
 
 variable "cluster_full_name" {
-  type = string 
+  type = string
 }
 
 variable "cluster_version" {
@@ -27,7 +27,7 @@ variable "stage" {
 }
 
 variable "max_worker_node_no" {
-  type = number 
+  type = number
 }
 
 variable "min_worker_node_no" {
@@ -35,19 +35,19 @@ variable "min_worker_node_no" {
 }
 
 variable "namespace" {
-  type = string 
+  type = string
 }
 
 variable "subnet_ids" {
-  type = list(any) 
+  type = list(any)
 }
 
-variable "worker_ami_id" {
+variable "ami_release_version" {
   type = string
 }
 
 variable "worker_instance_type" {
-  type = string 
+  type = string
 }
 
 variable "vpc_id" {

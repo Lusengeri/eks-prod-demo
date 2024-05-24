@@ -38,7 +38,7 @@ variable "vpc_id" {
   type = string
 }
 
-variable "worker_ami_id" {
+variable "ami_release_version" {
   type = string
 }
 
