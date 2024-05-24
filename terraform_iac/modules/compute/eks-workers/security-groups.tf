@@ -1,6 +1,6 @@
 resource "aws_security_group" "workers_sg" {
-  name        = "${var.namespace}-${var.environment}-workers"
-  description = "Security group for all nodes in the ${var.namespace}-${var.environment} cluster"
+  name        = "${var.namespace}-${var.stage}-workers"
+  description = "Security group for all nodes in the ${var.namespace}-${var.stage} cluster"
   vpc_id      = var.vpc_id
 
   egress {

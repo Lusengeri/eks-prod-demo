@@ -1,6 +1,6 @@
 resource "aws_security_group" "control_plane_sg" {
-  name        = "${var.namespace}-${var.environment}-cluster-control-plane-security-group"
-  description = "security group for for the ${var.namespace}-${var.environment}-cluster control plane"
+  name        = "${var.namespace}-${var.stage}-cluster-control-plane-security-group"
+  description = "security group for for the ${var.namespace}-${var.stage}-cluster control plane"
   vpc_id      = var.vpc_id
 
   egress {
@@ -11,7 +11,7 @@ resource "aws_security_group" "control_plane_sg" {
   }
 
   tags = {
-    Name                                        = "${var.namespace}-${var.environment}-cluster-sg"
+    Name                                        = "${var.namespace}-${var.stage}-cluster-sg"
     "kubernetes.io/cluster/${var.cluster_name}" = "owned"
   }
 }

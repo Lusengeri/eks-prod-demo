@@ -1,5 +1,5 @@
 resource "aws_iam_role" "eks_worker_role" {
-  name               = "${var.namespace}-${var.environment}-workers"
+  name               = "${var.namespace}-${var.stage}-workers"
   assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -52,30 +52,6 @@ resource "aws_iam_role_policy_attachment" "AmazonEBSCSIDriverPolicy" {
 }
 
 resource "aws_iam_instance_profile" "eks_worker_instance_profile" {
-  name = "${var.namespace}-${var.environment}-eks-worker-instance-profile"
+  name = "${var.namespace}-${var.stage}-eks-worker-instance-profile"
   role = aws_iam_role.eks_worker_role.name
-}
-
-# Data Bucket Access
-
-resource "aws_iam_role_policy_attachment" "data_bucket_access_policy_attachment" {
-  policy_arn = aws_iam_policy.s3_full_access.arn
-  role       = aws_iam_role.eks_worker_role.name
-}
-
-resource "aws_iam_policy" "s3_full_access" {
-  name        = "${var.namespace}-${var.environment}-full_access_policy"
-  description = "IAM policy for full access to an S3 bucket"
-
-  policy = jsonencode({
-    Version = "2012-10-17",
-    Statement = [{
-      Effect = "Allow",
-      Action = "s3:*",
-      Resource = [
-        "${var.data_bucket_arn}",
-        "${var.data_bucket_arn}/*",
-      ],
-    }],
-  })
 }

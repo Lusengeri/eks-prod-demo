@@ -22,11 +22,7 @@ variable "desired_worker_node_no" {
   type = number
 }
 
-variable "data_bucket_arn" {
-  type = any 
-}
-
-variable "environment" {
+variable "stage" {
   type = string
 }
 

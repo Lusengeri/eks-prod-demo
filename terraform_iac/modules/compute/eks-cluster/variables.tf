@@ -2,15 +2,11 @@ variable "cluster_name" {
   type = string
 }
 
-variable "data_bucket_arn" {
-  type = string
-}
-
 variable "desired_worker_node_no" {
   type = number
 }
 
-variable "environment" {
+variable "stage" {
   type = string
 }
 

@@ -6,7 +6,7 @@ resource "aws_eks_node_group" "worker_node_group" {
   cluster_name    = var.cluster_full_name
   version         = var.cluster_version
   instance_types  = [var.worker_instance_type]
-  node_group_name = "${var.namespace}-${var.environment}-worker-node-group"
+  node_group_name = "${var.namespace}-${var.stage}-worker-node-group"
   node_role_arn   = aws_iam_role.eks_worker_role.arn
   #release_version = nonsensitive(data.aws_ssm_parameter.eks_ami_release_version.value)
   release_version = var.worker_ami_id
@@ -19,7 +19,7 @@ resource "aws_eks_node_group" "worker_node_group" {
   }
 
   tags = {
-    "Environment" = var.environment
+    "stage" = var.stage
     "Name"        = "${var.namespace}-worker-node-group"
   }
 
