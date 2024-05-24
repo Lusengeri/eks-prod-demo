@@ -9,6 +9,11 @@ variable "database_subnets" {
   default = []
 }
 
+variable "stage" {
+  description = "the deployment stage" 
+  type = string
+}
+
 variable "has_igw" {
   default     = true
   description = "specifies whether an internet gateway is created for the vpc"
